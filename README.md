@@ -91,3 +91,8 @@ investment
     定时任务、异步调用
     邮件发送
     后台运行配置
+
+
+首先 - spring framework->spring 原理、配置 ->spring boot autoconfigration 
+
+springboot 需要添加配置的话，需要pom文件配置启动类
