@@ -111,7 +111,7 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 文件名 -->
             <fileNamePattern>${FILE_PATH}/java_log/test%d{yyyy-MM-dd}.log</fileNamePattern>
-            <maxHistory>10</maxHistory>
+            <maxHistory>2</maxHistory>
         </rollingPolicy>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{0} -%msg%n</pattern>
@@ -119,7 +119,7 @@
     </appender>
 
     <!--***********************常规级别过滤器的使用****************************************
-        本配置功能：过滤并接受请求级别为debug的请求，对于其他级别请求一律丢弃-->
+        本配置功能控制台打印：过滤并接受请求级别为debug的请求，对于其他级别请求一律丢弃-->
     <appender name="level_console" class="ch.qos.logback.core.ConsoleAppender">
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>debug</level>
@@ -172,32 +172,32 @@
         <appender-ref ref="STDOUT"/>
     </root>
 
-    <!-- name:指定logger名称；level：指定logger的分配级别；additivity(非必须，默认为true)：设置appender叠加性 -->
-    <logger name="logback.log1" level="debug" additivity="false">
+    <!-- name:指定logger名称；level：指定logger的分配级别；additivity(非必须，默认为true)上传上一级；设置appender叠加性 -->
+    <logger name="com.example.springbootstudybase.logback.log1" level="debug" additivity="false">
         <appender-ref ref="FILE"/>
     </logger>
 
-    <logger name="logback.log2" level="debug">
+    <logger name="com.example.springbootstudybase.logback.log2" level="debug" additivity="false">
         <appender-ref ref="rollingFile"/>
     </logger>
 
-    <logger name="logback.log3" level="debug">
+    <logger name="com.example.springbootstudybase.logback.log3" level="debug" additivity="false">
         <appender-ref ref="time_file"/>
     </logger>
 
-    <logger name="logback.log4" level="debug" additivity="false">
+    <logger name="com.example.springbootstudybase.logback.log4" level="debug" additivity="false">
         <appender-ref ref="level_console"/>
     </logger>
 
-    <logger name="logback.log5" level="debug" additivity="false">
+    <logger name="com.example.springbootstudybase.logback.log5" level="debug" additivity="false">
         <appender-ref ref="threshold_console"/>
     </logger>
 
-    <logger name="logback.log6" level="debug" additivity="false">
+    <logger name="com.example.springbootstudybase.logback.log6" level="debug" additivity="false">
         <appender-ref ref="jdbc"/>
     </logger>
 
-    <logger name="logback.log7" level="debug" additivity="false">
+    <logger name="com.example.springbootstudybase.logback.log7" level="debug" additivity="false">
         <appender-ref ref="Druid_datasource"/>
     </logger>
 

@@ -7,6 +7,7 @@ server:
   port: 8081
   max-http-header-size: 1000000
 
+
 spring:
   # dev|test|prod
   profiles:
@@ -59,3 +60,4 @@ mybatis-plus:
     call-setters-on-nulls: true
     jdbc-type-for-null: 'null'
 
+debug: true  #解决 AopAutoConfiguration matched报错
