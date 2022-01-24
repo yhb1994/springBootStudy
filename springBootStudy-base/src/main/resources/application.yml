@@ -59,5 +59,3 @@ mybatis-plus:
     cache-enabled: false
     call-setters-on-nulls: true
     jdbc-type-for-null: 'null'
-
-debug: true  #解决 AopAutoConfiguration matched报错

@@ -1,3 +1,7 @@
 1、springBoot的日志配置(logback.xml)
-    logback.xml - 日志框架自动识别
+    logback.xml - 日志框架自动识别 -
+        也在application.yml配置logging,设置配置文件地址
+             config: classpath:logbank/logback-dev.xml
+             level: com.hashtech.njbank.financing.rongyi: debug
     logback-spring.xml 日志框架不直接加载日志的配置项,由SpringBoot解析日志配置(官方推荐)
+        主要区别：logback-spring.xml可以根据不同的环境打印日志信息
