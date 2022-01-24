@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 基础日志文件打印
  * Created by yhb on 2021-12-31
  */
-
 @RestController
 @RequestMapping("log/")
 @RequiredArgsConstructor

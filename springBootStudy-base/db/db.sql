@@ -18,7 +18,6 @@ CREATE TABLE logging_event
     event_id          BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY
 );
 
-
 CREATE TABLE logging_event_property
 (
     event_id       BIGINT NOT NULL,
@@ -27,7 +26,6 @@ CREATE TABLE logging_event_property
     PRIMARY KEY(event_id, mapped_key),
     FOREIGN KEY (event_id) REFERENCES logging_event(event_id)
 );
-
 
 CREATE TABLE logging_event_exception
 (

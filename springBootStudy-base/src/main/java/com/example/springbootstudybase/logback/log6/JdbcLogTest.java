@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * mysql数据库
  * Created by yhb on 2021-12-31
  */
-
 @RestController
 @RequestMapping("log/")
 @RequiredArgsConstructor

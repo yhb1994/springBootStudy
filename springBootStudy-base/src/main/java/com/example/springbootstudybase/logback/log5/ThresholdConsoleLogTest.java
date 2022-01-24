@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 常规临界值滤器的使用
  * Created by yhb on 2021-12-31
  */
-
 @RestController
 @RequestMapping("log/")
 @RequiredArgsConstructor
