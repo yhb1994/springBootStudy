@@ -28,7 +28,8 @@ public class TryCatchErrorByHandler {
     @ExceptionHandler(AppException.class)
     public BusinessResult<String> globalException(HttpServletResponse response, AppException ex) {
         log.info("错误代码：" + response.getStatus());
-        return BusinessResult.fail(String.valueOf(ex.getCode()), ex.getMessage());
+        throw ex;
+        //return BusinessResult.fail(String.valueOf(ex.getCode()), ex.getMessage());
     }
 
     //处理get请求中 使用@Valid | @Validated验证路径中请求实体校验失败后抛出的异常

@@ -1,8 +1,8 @@
 1、springBoot的日志配置
     1、logback.xml - 日志框架自动识别 -
         也在application.yml配置logging,设置配置文件地址
-             config: classpath:logbank/logback-dev.xml
-             level: com.hashtech.njbank.financing.rongyi: debug
+             config: classpath:/logback-dev.xml
+             level: com.java: debug
     2、logback-spring.xml 日志框架不直接加载日志的配置项,由SpringBoot解析日志配置(官方推荐)
         主要区别：logback-spring.xml可以根据不同的环境打印日志信息
 2、springboot异常处理
@@ -10,3 +10,5 @@
     2、ErrorController类实现，使用系统默认异常处理类BasicErrorController
          可编码自己的错误处理类使默认处理类失效
     3、HandlerExceptionResolver实现全局异常捕获
+    4、异常捕获先后顺序     @ExceptionHandler->HandlerExceptionResolver->ErrorController
+    5、自定义 入参检测注解

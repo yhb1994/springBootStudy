@@ -1,6 +1,7 @@
 package com.example.springbootstudybase.exception.controller;
 
 import com.example.springbootstudybase.BusinessResult;
+import com.example.springbootstudybase.exception.annotation.MyAnnotation;
 import com.example.springbootstudybase.exception.exe.AppException;
 import com.example.springbootstudybase.exception.request.HelloRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -51,6 +52,14 @@ public class ExceptionController {
      */
     @GetMapping("/testConstraintViolationException")
     public BusinessResult<String> testConstraintViolationException(@RequestParam @NotBlank(message = "名称不可为空") String name) {
+        return BusinessResult.success(name + "hello");
+    }
+
+    /**
+     * get请求验证 @RequestParam + @Validated(类上面) + @NotBlank
+     */
+    @GetMapping("/testMyAnnotation")
+    public BusinessResult<String> testMyAnnotation(@RequestParam @MyAnnotation(message = "名称不可为空") String name) {
         return BusinessResult.success(name + "hello");
     }
 
