@@ -71,7 +71,7 @@ investment
 2、springboot web开发
     整合swagger
     使用模板引擎渲染web视图
-    同意异常处理
+    统一异常处理
 3、springboot 数据访问
     简单api
     多数据源配置
