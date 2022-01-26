@@ -3,6 +3,8 @@ package com.example.springbootstudybase.exception.controller;
 import com.example.springbootstudybase.BusinessResult;
 import com.example.springbootstudybase.exception.annotation.MyAnnotation;
 import com.example.springbootstudybase.exception.exe.AppException;
+import com.example.springbootstudybase.exception.inter.CreateOperation;
+import com.example.springbootstudybase.exception.inter.UpdateOperation;
 import com.example.springbootstudybase.exception.request.HelloRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
@@ -61,6 +63,22 @@ public class ExceptionController {
     @GetMapping("/testMyAnnotation")
     public BusinessResult<String> testMyAnnotation(@RequestParam @MyAnnotation(message = "名称不可为空") String name) {
         return BusinessResult.success(name + "hello");
+    }
+
+    /**
+     * 验证分组
+     */
+    @GetMapping(value = "/testGroups")
+    public BusinessResult<String> testGroups(@Validated({CreateOperation.class}) HelloRequest helloRequest) {
+        return BusinessResult.success(helloRequest.getHello() + "小明");
+    }
+
+    /**
+     * 验证分组
+     */
+    @GetMapping(value = "/testGroups1")
+    public BusinessResult<String> testGroups1(@Validated({UpdateOperation.class}) HelloRequest helloRequest) {
+        return BusinessResult.success(helloRequest.getHello() + "小明");
     }
 
 }
