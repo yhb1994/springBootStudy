@@ -1,7 +1,10 @@
 package com.example.springbootstudybase.filter.bean;
 
+import com.example.springbootstudybase.exception.service.AccountServiceImpl;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.FilterConfig;
@@ -17,7 +20,11 @@ import java.io.IOException;
 @Slf4j
 @Order(2)
 @WebFilter(filterName = "AllUrlFilter", urlPatterns = {"/filter/*"})
+@Component
+@RequiredArgsConstructor
 public class AllUrlFilter implements Filter {
+
+    private final AccountServiceImpl accountService;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -30,6 +37,7 @@ public class AllUrlFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         response.setHeader("Access-Control-Allow-Origin", "*");
         log.info("验证调用信息" + request.getRequestURL());
+        accountService.test();
         filterChain.doFilter(servletRequest, servletResponse);
         log.info("处理返回信息");
     }
