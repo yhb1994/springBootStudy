@@ -12,3 +12,5 @@
     3、HandlerExceptionResolver实现全局异常捕获
     4、异常捕获先后顺序     @ExceptionHandler->HandlerExceptionResolver->ErrorController
     5、自定义 入参检测注解
+3、filter 过滤器
+4、interceptor 拦截器
