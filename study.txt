@@ -13,4 +13,8 @@
     4、异常捕获先后顺序     @ExceptionHandler->HandlerExceptionResolver->ErrorController
     5、自定义 入参检测注解
 3、filter 过滤器
+    1、注解配置  @WebFilter @Order @ServletComponentScan("com.example.filter")   注解配置貌似order没用
+    2、java配置 FilterConfig   需要自定义顺序执行必须采用java配置
 4、interceptor 拦截器
+    1、 拦截器：实现一个HandlerInterceptor类，或者是继承HandlerInterceptorAdapter(抽象类)
+    2、注册器：实现WebMvcConfigurer 重写addInterceptors方法
