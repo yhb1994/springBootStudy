@@ -1,6 +1,9 @@
 package com.example.springbootstudybase.interceptor.handler;
 
+import com.example.springbootstudybase.exception.service.AccountServiceImpl;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,7 +16,11 @@ import javax.servlet.http.HttpServletResponse;
  * Created by yhb on 2022-01-27
  */
 @Slf4j
+@Component
+@RequiredArgsConstructor
 public class FirstInterceptorHandler implements HandlerInterceptor {
+
+    private final AccountServiceImpl accountService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -28,6 +35,7 @@ public class FirstInterceptorHandler implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         log.info("一号拦截器_postHandle");
+        accountService.test();
         log.info("controller执行结束" + response);
     }
 
