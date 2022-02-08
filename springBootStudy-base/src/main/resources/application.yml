@@ -59,3 +59,7 @@ mybatis-plus:
     cache-enabled: false
     call-setters-on-nulls: true
     jdbc-type-for-null: 'null'
+properties:
+  map:
+    "1": "1"
+    "2": "2"
