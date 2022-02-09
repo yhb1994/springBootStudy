@@ -3,48 +3,38 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://192.168.0.23:3306/yzgt?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true
-      username: yzgt
-      password: Yzgt@1202
-      initial-size: 10
-      max-active: 100
-      min-idle: 10
-      max-wait: 60000
-      pool-prepared-statements: true
-      max-pool-prepared-statement-per-connection-size: 20
-      time-between-eviction-runs-millis: 60000
-      min-evictable-idle-time-millis: 300000
+      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true
+      username: root
+      password: 123456
+      initial-size: 10  #-- 初始化连接池大小
+      max-active: 100   #-- 连接池最大个数
+      min-idle: 10      #-- 连接池最小个数
+      max-wait: 60000   #--等待连接超时时间
+      pool-prepared-statements: false   #--打开PSCache --oracle设为true(单独共享区域)，mysql设为false(connection级别)。分库分表较多推荐设置为false
+      max-pool-prepared-statement-per-connection-size: 20   #--语句存贮个数
+      time-between-eviction-runs-millis: 60000   #--间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      min-evictable-idle-time-millis: 300000    #--配置一个连接在池中最小生存的时间，单位是毫秒
       #Oracle需要打开注释
       #validation-query: SELECT 1 FROM DUAL
-      test-while-idle: true
-      test-on-borrow: false
-      test-on-return: false
-      stat-view-servlet:
+      test-while-idle: true  #--当应用向连接池申请连接，并且testOnBorrow为false时，连接池将会判断连接是否处于空闲状态，如果是，则验证这条连接是否可用
+      test-on-borrow: false #--当应用向连接池申请连接时，连接池会判断这条连接是否是可用的
+      test-on-return: false #--当应用使用完连接，连接池回收连接的时候会判断该连接是否还可用
+      stat-view-servlet: #--配置监控信息  http://localhost:8081/druid/index.html
         enabled: true
         url-pattern: /druid/*
-        #login-username: admin
-        #login-password: admin
+        login-username: admin  #--登录账户
+        login-password: admin  #--登录密码
       filter:
-        stat:
+        stat: #--慢SQL记录
           log-slow-sql: true
           slow-sql-millis: 1000
           merge-sql: false
-        wall:
+        wall: #--用于防火墙
           config:
             multi-statement-allow: true
-##多数据源的配置
-#dynamic:
-#  datasource:
-#    slave1:
-#      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-#      url: jdbc:sqlserver://localhost:1433;DatabaseName=investment
-#      username: sa
-#      password: 123456
-#    slave2:
-#      driver-class-name: org.postgresql.Driver
-#      url: jdbc:postgresql://localhost:5432/investment
-#      username: root
-#      password: 123456
+        slf4j:
+          enabled: true
+      filters: stat,wall,slf4j  #--配置监控信息
 
 logging:
   config: classpath:logback-spring.xml
