@@ -39,6 +39,10 @@ public class DruidConfig {
         registrationBean.addInitParameter("loginUsername", "root");
         registrationBean.addInitParameter("loginPassword", "root");
         registrationBean.addInitParameter("resetEnable", "false");
+        // IP白名单 (没有配置或者为空，则允许所有访问)
+        registrationBean.addInitParameter("allow", "");
+        //IP黑名单 (存在共同时，deny优先于allow)限制访问监控地址
+        registrationBean.addInitParameter("deny", "127.0.0.1");
         return registrationBean;
     }
 
@@ -53,6 +57,9 @@ public class DruidConfig {
         bean.setFilter(new WebStatFilter());
         Map<String, String> initParams = new HashMap<>();
         initParams.put("exclusions", "*.js,*.css,/druid/*");
+        initParams.put("principalSessionName", "USER_SESSION");
+        initParams.put("principalCookieName", "USER_COOKIE");
+        initParams.put("profileEnable", "true");
         bean.setInitParameters(initParams);
         bean.setUrlPatterns(Collections.singletonList("/*"));
         return bean;

@@ -27,7 +27,7 @@ spring:
       filter:
         stat: #--慢SQL记录
           log-slow-sql: true
-          slow-sql-millis: 1000
+          slow-sql-millis: 2
           merge-sql: true
         wall: #--用于防火墙
           config:
