@@ -28,13 +28,15 @@ spring:
         stat: #--慢SQL记录
           log-slow-sql: true
           slow-sql-millis: 1000
-          merge-sql: false
+          merge-sql: true
         wall: #--用于防火墙
           config:
             multi-statement-allow: true
         slf4j:
           enabled: true
-      filters: stat,wall,slf4j  #--配置监控信息
+      filters: stat,wall,slf4j  #--配置监控统计拦截的filters，去掉后监控界面sql无法统计，wall用于防火墙
+      # 合并多个DruidDataSource的监控数据
+      #useGlobalDataSourceStat: true
 
 logging:
   config: classpath:logback-spring.xml
