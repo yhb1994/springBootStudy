@@ -42,5 +42,23 @@ spring:
       #登录配置
       #stat-view-servlet:
 
+mybatis-plus:
+  #配置xml的扫描路径
+  mapper-locations: classpath*:mapper/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔(可去除)
+  #typeAliasesPackage: com.example.springbootstudybase.*.result
+  global-config:
+    db-config:
+      #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+      id-type: UUID
+      #配置逻辑删除字段为-1是删除
+      logic-delete-value: -1
+      #配置逻辑删除字段为0是未删除
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+
 logging:
   config: classpath:logback-spring.xml
