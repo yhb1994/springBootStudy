@@ -57,8 +57,8 @@ public class DruidConfig {
         bean.setFilter(new WebStatFilter());
         Map<String, String> initParams = new HashMap<>();
         initParams.put("exclusions", "*.js,*.css,/druid/*");
-        initParams.put("principalSessionName", "USER_SESSION");
-        initParams.put("principalCookieName", "USER_COOKIE");
+        initParams.put("principalSessionName", "JSESSIONID");  //配置打开session监控 暂时无用
+        initParams.put("principalCookieName", "Cookie");
         initParams.put("profileEnable", "true");
         bean.setInitParameters(initParams);
         bean.setUrlPatterns(Collections.singletonList("/*"));
