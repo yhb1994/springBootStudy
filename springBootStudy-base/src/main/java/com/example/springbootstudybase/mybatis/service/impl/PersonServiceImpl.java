@@ -5,12 +5,14 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.springbootstudybase.mybatis.dao.PersonDao;
+import com.example.springbootstudybase.mybatis.page.MyPage;
 import com.example.springbootstudybase.mybatis.result.Person;
 import com.example.springbootstudybase.mybatis.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by yhb on 2022-02-09
@@ -20,6 +22,11 @@ import java.util.List;
 public class PersonServiceImpl extends ServiceImpl<PersonDao, Person> implements PersonService {
 
     private final PersonDao personDao;
+
+    @Override
+    public IPage<Person> getPagePersonList(Map<String, Object> map) {
+        return personDao.selectPage(new MyPage<Person>().getPage(map), new QueryWrapper<>());
+    }
 
     /**
      * 简单的分页(会过滤调逻辑删除的数据)

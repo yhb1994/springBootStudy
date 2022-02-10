@@ -4,13 +4,11 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.springbootstudybase.mybatis.result.Person;
 import com.example.springbootstudybase.mybatis.service.PersonService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by yhb on 2022-02-09
@@ -31,6 +29,11 @@ public class PersonController {
     @RequestMapping("/pageList")
     public IPage<Person> pageList() {
         return personService.getPagePerson();
+    }
+
+    @RequestMapping("/myPageList")
+    public IPage<Person> myPageList(@RequestParam Map<String, Object> map) {
+        return personService.getPagePersonList(map);
     }
 
     @RequestMapping("/save")
