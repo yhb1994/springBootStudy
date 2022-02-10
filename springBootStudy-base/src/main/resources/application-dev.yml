@@ -56,9 +56,9 @@ mybatis-plus:
       #配置逻辑删除字段为0是未删除
       logic-not-delete-value: 0
   configuration:
-    map-underscore-to-camel-case: true
-    cache-enabled: false
-    call-setters-on-nulls: true
+    map-underscore-to-camel-case: true #--开启驼峰功能
+    cache-enabled: false  #二级缓存 namespace  默认为true
+    call-setters-on-nulls: true #解决某些字段值是null的，则这个字段就无法返回
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
 
 logging:
