@@ -13,3 +13,14 @@ package com.example.springbootstudybase.authority;
  *          4、 在页面中使用shiro自定义标签实现 页面显示权限控制
  * Spring Security:Spring Security拦截器(IOC AOP)声明式的安全访问控制功能
  */
+
+/*
+ * Shiro 架构包含三个主要的理念：Subject,SecurityManager和 Realm
+ * anon:未认证可以访问-org.apache.shiro.web.filter.authc.AnonymousFilter
+ * authc:认证后可以访问-org.apache.shiro.web.filter.authc.FormAuthenticationFilter
+ * perms:需要特定权限才能访问
+ * roles:需要特定角色才能访问
+ * user:需要特定用户才能访问
+ * port:需要特定端口才能访问
+ * reset:需要指定http请求才能访问
+ */
