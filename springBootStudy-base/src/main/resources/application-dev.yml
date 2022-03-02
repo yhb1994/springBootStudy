@@ -41,6 +41,11 @@ spring:
       #web-stat-filter:
       #登录配置
       #stat-view-servlet:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 mybatis-plus:
   #配置xml的扫描路径
